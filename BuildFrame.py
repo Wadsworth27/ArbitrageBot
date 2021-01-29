@@ -11,4 +11,12 @@ def BuildDataFrame(ticker,expdate):
     for i in range(0,math.floor(len(datalist)/16)-1):
         cleanRows.append(list(datalist[baseline:baseline+16]))
         baseline+=16
-    return pd.DataFrame(data=cleanRows,columns=columns)
+    calls_and_puts= pd.DataFrame(data=cleanRows,columns=columns)
+    calls_and_puts.rename({'Options(calls=': 'Id'}, axis=1, inplace=True)
+    calls_and_puts.to_csv('test1.csv')
+    puts=int(calls_and_puts[calls_and_puts['Id']=='puts='].index.values)
+    put_frame=calls_and_puts.iloc[puts+1:]
+    put_frame.columns=['ticker','last trade date','last trade time','strike','lastPrice','bid','ask','change','percentChange','volume','openInterest','impliedVolatility','inTheMoney','contractSize','currency','drop']
+    call_frame=calls_and_puts.iloc[:puts]
+    put_frame.drop('drop',axis=1)
+    return call_frame, put_frame

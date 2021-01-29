@@ -4,6 +4,7 @@ import pandas as pd
 import math
 from BuildFrame import BuildDataFrame
 
-df= BuildDataFrame('O','2021-02-19')
-df.rename({'Options(calls=': 'Id'}, axis=1, inplace=True)
-print(int(df[df['Id']=='puts='].index.values))
+#Test 1
+
+MSFTCalls,MSFTputs= BuildDataFrame('MSFT','2021-02-19')
+print(MSFTCalls[MSFTCalls['strike']=='205.0']['bid'])
