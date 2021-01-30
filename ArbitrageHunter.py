@@ -10,12 +10,13 @@ def ArbitrageHunter(lst):
                 try:
                     bid=float(lst[i][lst[i]['strike']==strike]['bid'])
                     ask=float(lst[j][lst[j]['strike']==strike]['ask'])
-                    if bid>ask:
+                    if bid+0.03>ask and bid>0.05:
                         ticker=str(lst[i].loc[1,'Ticker'])
                         option1exp =str(lst[i].loc[1,'Exp Date'])
                         option2exp =str(lst[j].loc[1,'Exp Date'])
                         oppSize= str(round((bid-ask)*100))
-                        formatedString="{}:The {} and {} ${} Strike represents a ${} arbitrage opportunity".format(ticker,option1exp,option2exp,strike,oppSize)
+                        opttype =str(lst[i].loc[1,'Option Type'])
+                        formatedString="{}:The {} and {} {} option ${} Strike represents a ${} arbitrage opportunity".format(ticker,option1exp,option2exp,opttype,strike,oppSize)
                         arbitrageOpps.append(formatedString)
                 except:
                         continue

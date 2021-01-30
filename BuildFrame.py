@@ -24,4 +24,6 @@ def BuildDataFrame(ticker,expdate):
     put_frame.insert(0,'Exp Date',expdate)
     call_frame.insert(0,'Ticker',ticker)
     put_frame.insert(0,'Ticker',ticker)
+    call_frame.insert(0,'Option Type','Call')
+    put_frame.insert(0,'Option Type','Put')
     return call_frame, put_frame
