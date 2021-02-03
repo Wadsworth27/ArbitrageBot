@@ -12,4 +12,4 @@ def GenerateOptionfunctions(ticker,dates):
     putsForHunter=str(puts).replace("'","")
     print('ArbitrageHunter('+callsForHunter+')')
     print('ArbitrageHunter('+putsForHunter+')')
-GenerateOptionfunctions('MRO','2021-02-05, 2021-02-12, 2021-02-19, 2021-02-26, 2021-03-05, 2021-03-19, 2021-04-16, 2021-06-18, 2021-07-16, 2021-09-17, 2022-01-21, 2023-01-20'.split(','))
+GenerateOptionfunctions('DD','2021-02-05, 2021-02-12, 2021-02-19, 2021-02-26, 2021-03-05, 2021-03-12, 2021-03-19, 2021-04-16, 2021-07-16, 2022-01-21, 2023-01-20'.split(','))

@@ -12,7 +12,6 @@ def BuildDataFrame(ticker,expdate):
         cleanRows.append(list(datalist[baseline:baseline+16]))
         baseline+=16
     calls_and_puts= pd.DataFrame(data=cleanRows,columns=columns)
-    calls_and_puts.to_csv('test.csv')
     calls_and_puts.rename({'Options(calls=': 'Id'}, axis=1, inplace=True)
     puts=int(calls_and_puts[calls_and_puts['Id']=='puts='].index.values)
     put_frame=calls_and_puts.iloc[puts+1:]

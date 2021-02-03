@@ -10,7 +10,7 @@ def ArbitrageHunter(lst):
                 try:
                     bid=float(lst[i][lst[i]['strike']==strike]['bid'])
                     ask=float(lst[j][lst[j]['strike']==strike]['ask'])
-                    if bid+0.03>ask and bid>0.05:
+                    if bid>ask and bid>0.05 and bid<2.0 and ask <2.0:
                         ticker=str(lst[i].loc[1,'Ticker'])
                         option1exp =str(lst[i].loc[1,'Exp Date'])
                         option2exp =str(lst[j].loc[1,'Exp Date'])
@@ -24,4 +24,4 @@ def ArbitrageHunter(lst):
         print(opp)
     if arbitrageOpps:
         time=datetime.now().time().strftime('%H:%M:%S')
-        messagebox.showinfo('ARBITRAGE OPPORTUNITY', 'PLEASE CHECK THE CONSOLE! An Arbitrage Opportunity has been found on {} at {}'.format(ticker,time))
+        #messagebox.showinfo('ARBITRAGE OPPORTUNITY', 'PLEASE CHECK THE CONSOLE! An Arbitrage Opportunity has been found on {} at {}'.format(ticker,time))
